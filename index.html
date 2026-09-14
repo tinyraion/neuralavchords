@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Neural Audio-Visual Chords: A Multimodal Framework for Temporally and Spatially Aligned Sound Generation from Visual Cues</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+  <meta name="theme-color" content="#563d7c">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.0/font/bootstrap-icons.css">
+  <style>
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 20px 0;
+    }
+
+    td, th {
+      border: 1px solid #ccc;
+      padding: 10px;
+      text-align: center;
+    }
+    
+    .section-title {
+      background-color: #f0f0f0;
+      padding: 12px;
+      border-radius: 4px;
+      margin: 30px 0 15px 0;
+      font-weight: bold;
+      font-size: 2.2em;
+    }
+
+    .prompt-title {
+      background-color: #f8f9fa;
+      padding: 10px;
+      border-radius: 4px;
+      margin: 20px 0 10px 0;
+      font-weight: bold;
+      font-size: 1.2em;
+    }
+
+    .row {
+      display: flex;
+      justify-content: center;   /* prevent space stretching */
+      gap: 200px;                 /* ✅ controls the gap */
+      align-items: flex-start;
+      margin-top: 12px;
+      margin-left: -150px
+      /* display: flex;
+      flex-wrap: nowrap;
+      justify-content: space-between; */
+    }
+
+    .col-md-2 {
+      flex: 1;
+      min-width: 0;
+      /* margin: -20px 0 -10px 0; */
+      text-align: center;
+    }
+
+    
+
+    audio {
+      width: 100%;
+      max-width: 180px;
+    }
+
+    .authors {
+      margin: 20px 0;
+      font-size: 1.1em;
+    }
+
+    .affiliations {
+      margin: 15px 0;
+      font-size: 0.95em;
+      color: #555;
+    }
+
+    .abstract {
+      text-align: left;
+      background-color: #f8f9fa;
+      padding: 20px;
+      border-radius: 8px;
+      margin: 25px 0;
+      line-height: 1.6;
+    }
+
+    .abstract h3 {
+      margin-top: 0;
+      margin-bottom: 15px;
+    }
+
+    .links {
+      margin: 20px 0;
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+    }
+
+    .link-button {
+      display: inline-block;
+      padding: 10px 20px;
+      background-color: #007bff;
+      color: white;
+      text-decoration: none;
+      border-radius: 5px;
+      font-weight: bold;
+    }
+
+    .link-button:hover {
+      background-color: #0056b3;
+      color: white;
+      text-decoration: none;
+    }
+
+    .bibtex {
+      text-align: left;
+      background-color: #f4f4f4;
+      padding: 20px;
+      border-radius: 8px;
+      margin: 30px 0;
+      font-family: monospace;
+      font-size: 0.9em;
+      overflow-x: auto;
+    }
+
+    
+    .video-row {
+      display: flex;
+      justify-content: center;   /* prevent space stretching */
+      gap: 16px;                 /* ✅ controls the gap */
+      align-items: flex-start;
+      margin-top: 12px;
+    }
+
+    
+    .video-item {
+      text-align: center;   /* ✅ centers text AND video */
+    }
+      
+    .video-title {
+      font-weight: 600;
+      margin-bottom: -10px;
+      margin-left:60px
+    }
+
+ 
+
+    video {
+      width: 350px;
+      display: block;
+    }
+
+    .bibtex h3 {
+      font-family: 'helvetica', 'arial', 'sans-serif';
+      margin-top: 0;
+      margin-bottom: 15px;
+    }
+  </style>
+</head>
+<body bgcolor="#FFFFFF" link="#000000" vlink="#000000" alink="#000000">
+
+<div class="text-center">
+  <br>
+  <div class="text-wrap" width="200px">
+    <font face="helvetica, ariel, 'sans serif'" size="6">
+      <b>Neural Audio-Visual Chords (NAVC): A Multimodal Framework for Temporally and Spatially Aligned Sound Generation from Visual Cues</b><br>
+    </font>
+  </div>
+
+  <div class="authors">
+   anonymous
+  </div>
+      
+  <div class="container mt-4" style="max-width: 1800px;">
+    <div class="section-title">Abstract</div>
+    <div class="abstract">
+      <p>
+        We introduce Neural Audio‑Visual Chords (NAVC), a multimodal generative framework for video‑to‑audio synthesis that aligns sound with visual content across temporal, spatial, and semantic dimensions. Inspired by the cinematic notion of audiovisual chords, our approach models sound as a structured response to evolving visual cues rather than purely global information. To this end, the framework integrates a diverse set of visual conditioning signals, including audio–visual sound event trajectories, localized and global semantic embeddings, depth cues, and textual descriptions. These unified cues are fused through an enhanced video‑to‑audio architecture equipped with Mixture‑of‑Experts (MoE) routing, enabling adaptive specialization across different alignment factors. This design facilitates fine‑grained temporal synchronization and controllable sound placement, supporting diegetic audio generation within a unified model. We demonstrate the effectiveness of Neural Audio‑Visual Chords on stereo audio-visual benchmark datasets such as Sphere360 and YT‑Ambigen, showing improved alignment and expressiveness compared to prior video‑to‑audio approaches. Finally, we discuss how the proposed architecture naturally extends to more general multi‑conditioning audio generation settings, opening avenues for scalable and controllable audiovisual synthesis.
+      </p>
+    </div>
+    <div class="section-title">Video to Stereo Audio Generations</div>
+    <p class="text-left">
+      This section presents random audio samples generated by the three different methods: NAVC, MMaudio-Stereo, and AudioX
+      For evaluating these examples, a stereo supported headset or speaker is strongly recommended. Please click the play button to listen to the audio.
+    
+    <div class="demo-table"  >
+      <div class="prompt-title">Text Control Video-to-Audio Generation With Different Prompts</div>
+      
+      <div class="row">
+        <div class="col-md-2">
+          <div class="video-title" style="margin-bottom: -40px;">No Text Prompt</div>
+          <video controls controlslist="nodownload" width="400" height="300" > 
+            <source  src='selected/multifoley/sample_drum_nocap.mp4'>Your browser does not support the audio element.
+          </video>  
+        </div>
+        <div class="col-md-2">
+          <div class="video-title" style="margin-bottom: -40px;">Text: Dog Barking</div>
+          <video controls controlslist="nodownload" width="400" height="300" > 
+            <source  src='selected/multifoley/drum_dog_barking.mp4'>Your browser does not support the audio element.
+          </video>
+        </div>
+        <div class="col-md-2">
+          <div class="video-title" style="margin-bottom: -40px;">Text: Bird Chirping</div>
+          <video controls controlslist="nodownload" width="400" height="300" > 
+            <source  src='selected/multifoley/drum_dog_birdchirp.mp4'>Your browser does not support the audio element.
+          </video>
+        </div>
+    </div>
+
+    <div class="demo-table"  >
+      <div class="prompt-title">Text Control Video-to-Audio Generation using NAVC</div>
+      
+      <div class="row">
+        <div class="col-md-2">
+          <div class="video-title" style="margin-bottom: -40px;">Text: Playing Erhu</div>
+          <video controls controlslist="nodownload" width="400" height="300" > 
+            <source  src='selected/multifoley/playingerhu.mp4'>Your browser does not support the audio element.
+          </video>  
+        </div>
+        <div class="col-md-2">
+          <div class="video-title" style="margin-bottom: -40px;">Text: Lion Roar</div>
+          <video controls controlslist="nodownload" width="400" height="300" > 
+            <source  src='selected/multifoley/cat_lion_roar.mp4'>Your browser does not support the audio element.
+          </video>
+        </div>
+        <div class="col-md-2">
+          <div class="video-title" style="margin-bottom: -40px;">Text: Typing on Keyboard</div>
+          <video controls controlslist="nodownload" width="400" height="300" > 
+            <source  src='selected/multifoley/typing_computer_keyboard.mp4'>Your browser does not support the audio element.
+          </video>
+        </div>
+    </div>
+
+    <div class="demo-table"  >
+      <div class="prompt-title">The Impact of Conditions</div>
+      <div class="row">
+        <div class="col-md-2">
+          <div class="video-title" style="margin-bottom: 20px;">Without Depth Condition</div>
+          <video controls controlslist="nodownload" width="400" height="300" > 
+            <source  src='selected/ours_depth/example_without_depth_1.mp4'>Your browser does not support the audio element.
+          </video>  
+        </div>
+        <div class="col-md-2" style="margin-left: -70px;">
+          <div class="video-title" style="margin-bottom: 20px;">With Depth Condition</div>
+          <video controls controlslist="nodownload" width="400" height="300" > 
+            <source  src='selected/ours_depth/example_with_depth_1.mp4'>Your browser does not support the audio element.
+          </video>
+        </div>
+        <div class="col-md-2" style="margin-left: -70px;">
+          <div class="video-title" style="margin-bottom: 20px;">Localize on Carriage</div>
+          <video controls controlslist="nodownload" width="400" height="300"  > 
+            <source  src='selected/ours_segment/example_with_carrier_segment_1.mp4'>Your browser does not support the audio element.
+          </video>
+        </div>
+        <div class="col-md-2" style="margin-left: -70px;">
+          <div class="video-title" style="margin-bottom: 20px;">Localize on Locomotive</div>
+          <video controls controlslist="nodownload" width="400" height="300" > 
+            <source  src='selected/ours_segment/example_with_locomotive_segment_1.mp4'>Your browser does not support the audio element.
+          </video>
+        </div>
+    </div>
+
+     <div class="prompt-title">Comparison with SOTA</div>
+      <div id="demo-table"></div>
+  </div>
+</div>
+
+
+ 
+
+<script>
+// Map of prompts to audio files
+const demoData = {
+    "Video 1": [
+    { file: "moe_ours/HiaNsIscHPY_250_sphere360.mp4", label: "NAVC (ours)" },
+    { file: "mmaudio/HiaNsIscHPY_250_sphere360.mp4", label: "MMaudio-Stereo" },
+    { file: "audiox/HiaNsIscHPY_250_sphere360.mp4", label: "AudioX" },
+  ],
+    "Video 2": [
+    { file: "moe_ours/kMZSoni0etA_40_sphere360.mp4", label: "NAVC (ours)" },
+    { file: "mmaudio/kMZSoni0etA_40_sphere360.mp4", label: "MMaudio-Stereo" },
+    { file: "audiox/kMZSoni0etA_40_sphere360.mp4", label: "AudioX" },
+  ],
+  "Video 3": [
+    { file: "moe_ours/DTIt8aoSEEw_18_ytamb.mp4", label: "NAVC (ours)" },
+    { file: "mmaudio/DTIt8aoSEEw_18_ytamb.mp4", label: "MMaudio-Stereo" },
+    { file: "audiox/DTIt8aoSEEw_18_ytamb.mp4", label: "AudioX" },
+  ],
+  "Video 4": [
+    { file: "moe_ours/I_M0f1c59oc_76_sphere360.mp4", label: "NAVC (ours)" },
+    { file: "mmaudio/I_M0f1c59oc_76_sphere360.mp4", label: "MMaudio-Stereo" },
+    { file: "audiox/I_M0f1c59oc_76_sphere360.mp4", label: "AudioX" },
+  ],
+    "Video 5": [
+    { file: "moe_ours/lOuxAW-wDWo_50_ytamb.mp4", label: "NAVC (ours)" },
+    { file: "mmaudio/lOuxAW-wDWo_50_ytamb.mp4", label: "MMaudio-Stereo" },
+    { file: "audiox/lOuxAW-wDWo_50_ytamb.mp4", label: "AudioX" },
+  ],
+  "Video 6": [
+    { file: "moe_ours/IywSTYwIUHE_77_ytamb.mp4", label: "NAVC (ours)" },
+    { file: "mmaudio/IywSTYwIUHE_77_ytamb.mp4", label: "MMaudio-Stereo" },
+    { file: "audiox/IywSTYwIUHE_77_ytamb.mp4", label: "AudioX" },
+  ],
+  "Video 7": [
+    { file: "moe_ours/_SS4frNtIUk_77_ytamb.mp4", label: "NAVC (ours)" },
+    { file: "mmaudio/_SS4frNtIUk_77_ytamb.mp4", label: "MMaudio-Stereo" },
+    { file: "audiox/_SS4frNtIUk_77_ytamb.mp4", label: "AudioX" },
+  ],
+   "Video 8": [
+    { file: "moe_ours/ewdxL8vmXoM_94_ytamb.mp4", label: "NAVC (ours)" },
+    { file: "mmaudio/ewdxL8vmXoM_94_ytamb.mp4", label: "MMaudio-Stereo" },
+    { file: "audiox/ewdxL8vmXoM_94_ytamb.mp4", label: "AudioX" },
+  ]
+  
+};
+
+// Render table
+const container = document.getElementById("demo-table");
+
+Object.entries(demoData).forEach(([prompt, files]) => {
+  const section = document.createElement("div");
+  section.innerHTML = `<div class="prompt-title">${prompt.replace(/_/g," ")}</div>`;
+  
+  const row = document.createElement("div");
+  row.className = "row";
+
+  files.forEach(f => {
+    const col = document.createElement("div");
+    col.className = "col-md-2";
+    col.innerHTML = `
+      <div  class="video-title"><b>${f.label}</b></div>
+      <video controls controlslist="nodownload" width="400" height="400" > 
+        <source  src='selected/${f.file}'>Your browser does not support the audio element.
+      </video>
+    `;
+    row.appendChild(col);
+  });
+
+  section.appendChild(row);
+  container.appendChild(section);
+});
+</script>
+
+</body>
+</html>

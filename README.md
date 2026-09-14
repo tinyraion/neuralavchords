@@ -1,1 +1,3 @@
-# neuralavchords.github.io
+"Neural Audio Visual Chords".
+
+Please see our index.html. 
